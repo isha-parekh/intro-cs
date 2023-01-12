@@ -60,7 +60,7 @@ void draw() {
   }
 
   /*when the button is clicked the balls start falling, and when the timer runs out
-  the code stops*/
+   the code stops*/
   if (pressButton=="Clicked") {
     throwBall= true;
     counter=counter+1;
