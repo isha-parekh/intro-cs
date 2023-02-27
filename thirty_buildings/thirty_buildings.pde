@@ -10,23 +10,24 @@ int counter;
  float xLeft= xCenter-(widthOfBldg/2);
   float yTop= yCenter- (heightOfBldg/2);
   float xWindowCenter, yWindowCenter;
-  int a=1;
+  int numFloors=1;
 
 void setup(){
   size (1500,800);
   background(91, 172, 201);
-  building(50, yBottom, widthOfBldg, numWindows);
-  building(175, yBottom, widthOfBldg, numWindows);
+  building(100, yBottom, widthOfBldg, numWindows);
+  //building(175, yBottom, widthOfBldg, numWindows);
   building(300, yBottom, widthOfBldg, numWindows);
-  building(425, yBottom, widthOfBldg, numWindows);
-  building(550, yBottom, widthOfBldg, numWindows);
-  building(675, yBottom, widthOfBldg, numWindows);
-  building(800, yBottom, widthOfBldg,numWindows);
-  building(925, yBottom, widthOfBldg , numWindows);
-  building(1050, yBottom, widthOfBldg, numWindows);
-  building(1175, yBottom, widthOfBldg,numWindows);
+  //building(425, yBottom, widthOfBldg, numWindows);
+  building(500, yBottom, widthOfBldg, numWindows);
+  //building(675, yBottom, widthOfBldg, numWindows);
+  building(700, yBottom, widthOfBldg,numWindows);
+  //building(925, yBottom, widthOfBldg , numWindows);
+  building(900, yBottom, widthOfBldg, numWindows);
+  //building(1175, yBottom, widthOfBldg,numWindows);
+  building(1100, yBottom, widthOfBldg,numWindows);
+  //building(1425, yBottom, widthOfBldg,numWindows);
   building(1300, yBottom, widthOfBldg,numWindows);
-  building(1425, yBottom, widthOfBldg,numWindows);
 }
 
 
@@ -37,12 +38,12 @@ void building(float xCenter, float yBottom, float widthOfBldg, int numWindows){
   rectMode(CENTER);
   heightOfBldg=random(500,800);
   yCenter= yBottom - (heightOfBldg/2);
-  widthOfBldg= random(75,125);
+  widthOfBldg= random(110,160);
   rect(xCenter, yCenter, widthOfBldg, heightOfBldg);
-   if(widthOfBldg<=100){
+   if(widthOfBldg<=125){
     doubleDoor= false;
   }
-  else if(widthOfBldg>100){
+  else if(widthOfBldg>125){
    doubleDoor= true;
   }
   else{
@@ -58,34 +59,42 @@ void building(float xCenter, float yBottom, float widthOfBldg, int numWindows){
   }
  
   fill(199, 243, 252);
-  if(widthOfBldg<=100){
+  if(widthOfBldg<=125){
     numWindows=3;
     
   }
-  else if(widthOfBldg>100){
+  else if(widthOfBldg>125){
   numWindows= 4;
   }
   
   if(heightOfBldg<=600){
-    a=9;
+    numFloors=9;
+    xWindowCenter= xWindowCenter+ (heightOfBldg/9);
   }
   
   else if(heightOfBldg<=700){
-    a=10;
+    numFloors=10;
+    xWindowCenter= xWindowCenter+ (heightOfBldg/10);
   }
   else{
-    a=11;
+    numFloors=11;
+    xWindowCenter= xWindowCenter+ (heightOfBldg/11);
   }
-  for(counter=1; counter<numWindows; counter=counter+1){
+  
+   windows(xCenter, yBottom, widthOfBldg, numWindows);
    
-  }
+ 
   
 
 }
 
-void windows(){
-   xWindowCenter= xLeft+ counter*(widthOfBldg/numWindows);
-    yWindowCenter= yTop+ (heightOfBldg/(numWindows*a));
-    rect(xWindowCenter, yWindowCenter, 20, 20);
-  
+void windows(float xCenter, float yBottom, float widthOfBldg, int numWindows){
+  float xLeft= xCenter-(widthOfBldg/2);
+  float step= widthOfBldg/(numWindows+1);
+  int window= 1;
+  while(window<=numWindows){
+  rect(xLeft+ window*step, 500, step/2, step/2);
+  window= window+1;
+  }
+   
 }
