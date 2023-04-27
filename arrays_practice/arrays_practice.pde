@@ -20,7 +20,7 @@ void draw() {
     
     fill(255);
     textSize(25);
-    text("depth of puddle is " + depth, 700, 50);
+    text("depth of puddle is " + depth/2, 700, 50);
     
     
   }
